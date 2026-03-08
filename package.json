@@ -1,0 +1,24 @@
+{
+  "name": "opencode-copilot-dashboard-plugin",
+  "version": "0.1.0",
+  "description": "OpenCode plugin for GitHub Copilot account dashboard and switching",
+  "type": "module",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "node --import tsx --test test/*.test.ts test/integration/*.test.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@opencode-ai/plugin": "file:../../.config/opencode/node_modules/@opencode-ai/plugin"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.5",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}
