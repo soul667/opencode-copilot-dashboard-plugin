@@ -19,7 +19,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@opencode-ai/plugin": "file:../../.config/opencode/node_modules/@opencode-ai/plugin"
+    "@opencode-ai/plugin": "1.2.21"
   },
   "devDependencies": {
     "@types/node": "^25.3.5",
