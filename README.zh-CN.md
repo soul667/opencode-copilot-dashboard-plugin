@@ -59,3 +59,18 @@ npm run build
 - 不会修改非 Copilot provider（如 `openai`、`google`）。
 - 对 `auth.json` 的写入是原子操作（临时文件 + rename）。
 - 写入失败时会保持原始 auth 内容不变。
+
+## GitHub Actions
+
+仓库内已包含两套工作流：
+
+- `.github/workflows/npm-publish.yml`
+  - 触发：发布 Release、或手动触发
+  - 功能：若 npm 上不存在当前版本则自动发布
+  - 必需 Secret：`NPM_PUBLISH_TOKEN`
+
+- `.github/workflows/codex-pr-review.yml`
+  - 触发：PR opened/synchronize/reopened
+  - 功能：运行 Codex 代码审查并自动评论到 PR
+  - 必需 Secret：`OPENAI_API_KEY`
+  - 默认仅在非 fork PR 上运行（避免泄露密钥）

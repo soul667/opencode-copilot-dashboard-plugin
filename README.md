@@ -59,3 +59,18 @@ If using local file dependency in `~/.config/opencode/package.json`:
 - This plugin does not modify non-Copilot providers (`openai`, `google`, etc.).
 - `auth.json` updates are atomic (temp write + rename).
 - Failed writes keep original auth content unchanged.
+
+## GitHub Actions
+
+Two workflows are included:
+
+- `.github/workflows/npm-publish.yml`
+  - Trigger: release published, or manual dispatch
+  - Publishes package to npm if the version does not already exist
+  - Required secret: `NPM_PUBLISH_TOKEN`
+
+- `.github/workflows/codex-pr-review.yml`
+  - Trigger: pull request opened/synchronize/reopened
+  - Runs Codex review and posts a PR comment
+  - Required secret: `OPENAI_API_KEY`
+  - Runs only for non-fork PRs by default
