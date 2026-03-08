@@ -26,12 +26,27 @@
 - OpenCode 认证文件：`~/.local/share/opencode/auth.json`
 - 插件账号索引：`~/.local/share/opencode-copilot-dashboard-plugin/accounts.json`
 
-## 安装（本地项目）
+## 安装
+
+### 方案 A（推荐）：让 OpenCode 按插件标识自动安装
+
+直接在 `~/.config/opencode/opencode.json` 里添加：
+
+```json
+{
+  "plugin": [
+    "opencode-copilot-dashboard-plugin@latest"
+  ]
+}
+```
+
+OpenCode 会自动解析并安装该 npm 插件。
+
+### 方案 B：先在 OpenCode 配置目录里手动 npm 安装
 
 ```bash
-cd /path/to/opencode-copilot-dashboard-plugin
-npm install
-npm run build
+cd ~/.config/opencode
+npm install opencode-copilot-dashboard-plugin
 ```
 
 然后把插件加入 `~/.config/opencode/opencode.json`：
@@ -44,15 +59,17 @@ npm run build
 }
 ```
 
-如果你在 `~/.config/opencode/package.json` 里用本地依赖方式：
+确认 `~/.config/opencode/opencode.json` 中包含插件项：
 
 ```json
 {
-  "dependencies": {
-    "opencode-copilot-dashboard-plugin": "file:/absolute/path/to/opencode-copilot-dashboard-plugin"
-  }
+  "plugin": [
+    "opencode-copilot-dashboard-plugin"
+  ]
 }
 ```
+
+仅在本地开发插件时，才建议使用 `file:` 依赖方式。
 
 ## 安全说明
 

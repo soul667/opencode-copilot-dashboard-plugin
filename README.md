@@ -26,12 +26,27 @@ It automatically discovers Copilot credentials from OpenCode auth state, keeps a
 - OpenCode auth file: `~/.local/share/opencode/auth.json`
 - Plugin account index: `~/.local/share/opencode-copilot-dashboard-plugin/accounts.json`
 
-## Install (local project)
+## Install
+
+### Option A (recommended): let OpenCode install by plugin spec
+
+Add this directly to `~/.config/opencode/opencode.json`:
+
+```json
+{
+  "plugin": [
+    "opencode-copilot-dashboard-plugin@latest"
+  ]
+}
+```
+
+OpenCode will resolve and install the plugin package automatically.
+
+### Option B: preinstall with npm in OpenCode config directory
 
 ```bash
-cd /path/to/opencode-copilot-dashboard-plugin
-npm install
-npm run build
+cd ~/.config/opencode
+npm install opencode-copilot-dashboard-plugin
 ```
 
 Then add plugin into `~/.config/opencode/opencode.json`:
@@ -44,15 +59,17 @@ Then add plugin into `~/.config/opencode/opencode.json`:
 }
 ```
 
-If using local file dependency in `~/.config/opencode/package.json`:
+Ensure the plugin is listed in `~/.config/opencode/opencode.json`:
 
 ```json
 {
-  "dependencies": {
-    "opencode-copilot-dashboard-plugin": "file:/absolute/path/to/opencode-copilot-dashboard-plugin"
-  }
+  "plugin": [
+    "opencode-copilot-dashboard-plugin"
+  ]
 }
 ```
+
+For local development only, you may still use a `file:` dependency.
 
 ## Safety Notes
 
